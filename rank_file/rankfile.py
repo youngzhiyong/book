@@ -7,7 +7,7 @@ class Summary:
         self.summary_file = self.rank_path + "/" + summary_file
         self.cur_dir_name = os.path.split(os.getcwd())[1]
         self.summary = open(self.summary_file, "wb")
-        self.special_file = "LICENSE README.md " + summary_file
+        self.special_file = "LICENSE README.md book.json" + summary_file
     
     def __del__(self):
         self.summary.close()
@@ -28,6 +28,9 @@ class Summary:
         
         return rank_path
         
+    def rank_book_name(self, book_name = "young book"):
+        book_title = self.get_title(1, book_name)
+        self.write_text(book_title)
     
     def rank_overview(self, filename:str = "README.md"):
         if not isinstance(filename, str):
@@ -41,10 +44,11 @@ class Summary:
         text = "概述"
         link = filename
         text_link = self.get_text_link(text, link)
-        self.write_text(text_link)
-        self.write_text("")
+        overview = self.get_list(0, text_link)
+        self.write_text(overview)
     
     def rank_files(self):
+        self.rank_book_name()
         self.rank_overview()
         self.rank_docs(self.rank_path)
 
@@ -60,7 +64,8 @@ class Summary:
 
             if os.path.isdir(file_path):
                 if level == 0:
-                    content = self.get_title(level, file)
+                    title_level = level + 2
+                    content = self.get_title(title_level, file)
                 else:
                     content = self.get_list(level, file)
                 self.write_text(content)
@@ -83,13 +88,11 @@ class Summary:
         return "[" + text + "]" + "(" + link + ")"
     
     def get_title(self, level:int, text:str):
-        if level == 0:
-            level += 1
-        return "#" * level + " " + text
+        return "\n" + "#" * level + " " + text + "\n"
     
     def get_list(self, level:int, text:str):
         table_space = 4
-        if level != 0:
+        if level > 0:
             level -= 1
         return " " * table_space * level + "* " + text 
     
