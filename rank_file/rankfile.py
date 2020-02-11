@@ -1,5 +1,6 @@
 import os
 import sys
+import re
 
 class Summary:
     def __init__(self, rank_path:str = None, summary_file:str = "SUMMARY.md"):
@@ -54,13 +55,12 @@ class Summary:
 
     def rank_docs(self, path, level = 0):
         files = os.listdir(path)
+        files.sort()
         for file in files:
             if file in self.special_file:
                 continue
 
             file_path = path + "/" + file
-
-            self.extract_link(file_path)
 
             if os.path.isdir(file_path):
                 if level == 0:
@@ -78,7 +78,11 @@ class Summary:
                self.write_text(content)
 
     def extract_text(self, filename):
-        return filename.split(".")[0]
+        text = filename.split(".")[0]
+        if re.match("[0-9]._", text):
+            text = text.split("_")[1]
+        
+        return text
     
     def extract_link(self, file_path):
         link = file_path.split(self.rank_path + "/")[1]
