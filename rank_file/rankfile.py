@@ -7,7 +7,7 @@ class Summary:
         self.rank_path = self.__get_rank_path(rank_path)
         self.summary_file = self.rank_path + "/" + summary_file
         self.cur_dir_name = os.path.split(os.getcwd())[1]
-        self.summary = open(self.summary_file, "wb")
+        self.summary = open(self.summary_file, "w", encoding="utf-8")
         self.special_file = "LICENSE README.md book.json" + summary_file
     
     def __del__(self):
@@ -101,7 +101,7 @@ class Summary:
         return " " * table_space * level + "* " + text 
     
     def write_text(self, text):
-        self.summary.write((text + "\n").encode("utf-8"))
+        self.summary.write((text + "\n"))
     
     
 
