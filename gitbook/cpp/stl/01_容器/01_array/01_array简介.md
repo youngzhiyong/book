@@ -15,9 +15,9 @@ array是C++11新引入的一种C-Style的静态数组容器，array类型的变�
 **类声明：**
 
 ```c++
-template< 
-    class T, 
-    std::size_t N 
+template<
+    class T,
+    std::size_t N
 > struct array;
 
 // 头文件包含

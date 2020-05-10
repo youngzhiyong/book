@@ -14,17 +14,17 @@ using namespace std;
 
 int main()
 {
-	array<int, 3> a;
-	for (auto val : a) {
-		cout << val << " ";
-	}
-	cout << endl;
+    array<int, 3> a;
+    for (auto val : a) {
+        cout << val << " ";
+    }
+    cout << endl;
 
-	return 0;
+    return 0;
 }
 ```
 
-输出结果：
+代码输出：
 
 ```c++
 65535 3 0
@@ -43,17 +43,17 @@ using namespace std;
 
 int main()
 {
-	array<int, 3> a {};     // 聚合方式初始化
-	for (auto val : a) {
-		cout << val << " ";
-	}
-	cout << endl;
+    array<int, 3> a {};     // 聚合方式初始化
+    for (auto val : a) {
+        cout << val << " ";
+    }
+    cout << endl;
 
-	return 0;
+    return 0;
 }
 ```
 
-输出结果：
+代码输出：
 
 ```c++
 0 0 0
@@ -68,17 +68,18 @@ using namespace std;
 
 int main()
 {
-	array<int, 3> a {1};
-	for (auto val : a) {
-		cout << val << " ";
-	}
-	cout << endl;
+    array<int, 3> a {1};
+    // array<int, 3> a = {1};	// 等价形式
+    for (auto val : a) {
+        cout << val << " ";
+    }
+    cout << endl;
 
-	return 0;
+    return 0;
 }
 ```
 
-代码输出结果：
+代码输出：
 
 ```c++
 1 0 0
@@ -101,18 +102,18 @@ using namespace std;
 
 int main()
 {
-	array<int, 3> a;
-	a.fill(10);
-	for (auto val : a) {
-		cout << val << " ";
-	}
-	cout << endl;
+    array<int, 3> a;
+    a.fill(10);
+    for (auto val : a) {
+        cout << val << " ";
+    }
+    cout << endl;
 
-	return 0;
+    return 0;
 }
 ```
 
-输出结果：
+代码输出：
 
 ```c++
 10 10 10
