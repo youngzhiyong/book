@@ -24,6 +24,8 @@ template<
 #include <array>
 ```
 
+注：N必须是常量表达式(constant expression，编译期可确定其值)
+
 **容器相关操作：**
 
 * 增：不支持
