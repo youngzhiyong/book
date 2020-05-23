@@ -291,21 +291,73 @@ void push_back(const T& value);
 * 若预分配存储空间不足，同样需要新申请内存空间，并拷贝原存储空间元素到新的内存空间，时间复杂度为$O(n)$。
 
 ```c++
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    vector<vector<int>> nums;
+    nums.push_back({1, 2});
+    nums.push_back({3, 4});
+
+    for (auto& row : nums) {
+        for (auto val : row) {
+            cout << val << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
 ```
 
 代码输出：
 
 ```c++
+1 2 
+3 4 
 ```
 
+**5.在尾部追加就地(in-place at a location)初始化的元素**
 
 ```c++
 template<class... Args>
 void emplace_back(Args&&... args);
 ```
 
-```c++
-void resize(size_type count);
-void resize(size_type count, const value_type& value);
-```
+* 在尾部追加元素，与push_back类似，只是emplace_back是使用就地初始化的方式，更加高效。
 
+```c++
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+class Student {
+public:
+    Student(string name, int age): name(name), age(age) {}
+
+    void Show()
+    {
+        cout << name << " " << age << endl;
+    }
+
+private:
+    string name;
+    int age;
+};
+
+int main()
+{
+    vector<Student> students;
+    students.emplace_back("cpp", 20);
+
+    for (auto student : students) {
+        student.Show();
+    }
+
+    return 0;
+}
+```
