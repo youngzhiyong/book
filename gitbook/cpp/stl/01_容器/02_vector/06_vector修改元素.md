@@ -6,24 +6,23 @@
 * front和back方式
 * 迭代器方式
   
-上述方式的函数声明，请查看[array查找元素](./05_array查找元素.md)章节。
+上述方式的函数声明，请查看[vector查找元素](./05_vector查找元素.md)章节。
 
 ## 角标方式
 
 ```c++
-#include <array>
+#include <vector>
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    constexpr int len = 6;
-    array<int, len> a = {1, 3, 9, 13, 19, 98};
+    vector<int> nums = {1, 3, 9, 13, 19, 98};
 
-    cout << a[0] << "->";
-    a[0] = 32;
-    cout << a[0] << endl;
+    cout << nums[0] << "->";
+    nums[0] = 32;
+    cout << nums[0] << endl;
 
     return 0;
 }
@@ -40,19 +39,18 @@ int main()
 仅能修改最前和最后的元素。
 
 ```c++
-#include <array>
+#include <vector>
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    constexpr int len = 6;
-    array<int, len> a = {1, 3, 9, 13, 19, 98};
+    vector<int> nums = {1, 3, 9, 13, 19, 98};
 
-    cout << a.front() << "->";
-    a.front() = 32;
-    cout << a.front() << endl;
+    cout << nums.front() << "->";
+    nums.front() = 32;
+    cout << nums.front() << endl;
 
     return 0;
 }
@@ -67,17 +65,16 @@ int main()
 ## 迭代器方式
 
 ```c++
-#include <array>
+#include <vector>
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    constexpr int len = 6;
-    array<int, len> a = {1, 3, 9, 13, 19, 98};
+    vector<int> nums = {1, 3, 9, 13, 19, 98};
 
-    auto iter = a.begin();
+    auto iter = nums.begin();
 
     cout << *iter << "->";
     *iter = 32;
