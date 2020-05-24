@@ -265,7 +265,7 @@ private:
 int main()
 {
     vector<Student> students;
-    students.emplace(students.begin(), "cpp", 20);
+    students.emplace(students.begin(), "cpp", 38);
 
     for (auto student : students) {
         student.Show();
@@ -278,7 +278,7 @@ int main()
 代码输出：
 
 ```c++
-cpp 20
+cpp 38
 ```
 
 **4.向vector容器的尾部追加元素**
@@ -352,7 +352,7 @@ private:
 int main()
 {
     vector<Student> students;
-    students.emplace_back("cpp", 20);
+    students.emplace_back("cpp", 38);
 
     for (auto student : students) {
         student.Show();
@@ -365,5 +365,5 @@ int main()
 代码输出：
 
 ```c++
-cpp 20
+cpp 38
 ```
