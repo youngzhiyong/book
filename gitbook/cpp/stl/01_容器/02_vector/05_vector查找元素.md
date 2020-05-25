@@ -136,7 +136,7 @@ int main()
 {
     vector<int> nums = {1, 3, 9, 13, 19, 98};
 
-    for (int i = 0; i < len; ++i) {
+    for (int i = 0; i < nums.size(); ++i) {
         cout << nums[i] << " ";
     }
     cout << endl;
@@ -205,6 +205,10 @@ int main()
 ```c++
 1 3 9 13 19 98
 ```
+
+*d.范围for语句访问二维数组*
+
+TODO:注意行采用引用方式
 
 ## 查找元素
 
