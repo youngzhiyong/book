@@ -4,6 +4,10 @@
 
 仅列出常用访问元素的方法，其他方法请参考[cppreference](https://en.cppreference.com/w/cpp/container/vector)。
 
+* 角标
+* front和back
+* 迭代器
+
 **1.角标方式支持随机访问**
 
 vector成员函数声明
@@ -208,7 +212,43 @@ int main()
 
 *d.范围for语句访问二维数组*
 
-TODO:注意行采用引用方式
+访问二维数组时，对每一行的提取，通过**引用**的方式，提高运行效率。
+
+```c++
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    vector<vector<int>> nums = {
+        {1, 2, 3},
+        {4, 5}
+    };
+
+    for (auto& row : nums) {
+        for (auto val : row) {
+            cout << val << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+```
+
+代码输出：
+
+```c++
+1 2 3
+4 5
+```
+
+说明：
+
+* row的数据类型为`vector<int>&`；
+* row采用引用的方式，减少临时对象的创建，及内存数据的拷贝，从而提高运行效率。
 
 ## 查找元素
 

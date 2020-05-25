@@ -1,5 +1,11 @@
 # vector删除元素
 
+vector删除元素，主要有以下几种方式：
+
+* clear
+* erase
+* pop_back
+
 **1.删除容器中所有的元素**
 
 ```c++

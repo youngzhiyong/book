@@ -1,5 +1,13 @@
 # vector增加元素
 
+vector增加元素主要有以下几种方式：
+
+* assign
+* insert
+* emplace
+* push_back
+* emplace_back
+
 **1.vector空对象，assign增加元素**
 
 ```c++
