@@ -85,7 +85,7 @@ void reserve(size_type new_cap);
 ```
 
 * 场景：可确定需要存储元素个数；
-* 功能：**预分配存储空间**，减少新增元素过程中的频繁申请、释放内存动作，提高运行效率；
+* 功能：**预分配存储空间**，减少新增元素过程中的频繁申请、释放内存动作，适当提高运行效率（效果不是很明显）；
 * 影响：增大capacity，对size和max_size无影响。
 
 *a. 未使用reserve，新增100万个元素*
@@ -229,21 +229,21 @@ int main()
 代码输出：
 
 ```c++
-allocate elements:1    
-allocate elements:2    
+allocate elements:1
+allocate elements:2
 deallocate elements:1  
-allocate elements:4    
+allocate elements:4
 deallocate elements:2  
-allocate elements:8    
+allocate elements:8
 deallocate elements:4  
-allocate elements:16   
+allocate elements:16
 deallocate elements:8  
-allocate elements:32   
-deallocate elements:16 
-allocate elements:64   
-deallocate elements:32 
+allocate elements:32
+deallocate elements:16
+allocate elements:64
+deallocate elements:32
 allocate elements:128  
-deallocate elements:64 
+deallocate elements:64
 deallocate elements:128
 ```
 
