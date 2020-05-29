@@ -305,6 +305,125 @@ void resize(size_type count, const value_type& value);
 * `count < size()`：缩减容器大小为count个有效元素；
 * `count > size()`：使用value/默认值填充新增至count个元素，原数据值保持不变。
 
+*a.缩减容器元素个数*
 
-## vector比较——非vector成员函数
+```c++
+#include <vector>
+#include <iostream>
 
+using namespace std;
+
+int main()
+{
+    const int count = 100;
+    vector<int> nums;
+    for (int i = 0; i < count; ++i) {
+        nums.push_back(i);
+    }
+
+    cout << nums.size() << " " << nums.capacity() << endl;
+    nums.resize(5);
+    cout << nums.size() << " " << nums.capacity() << endl;
+
+    return 0;
+}
+```
+
+代码输出：
+
+```c++
+100 128
+5 128
+```
+
+**注：**
+缩减容器中的元素个数，不影响预分配的存储空间，与原容器的capacity保持一致。
+
+*b. 增大容器元素个数*
+
+```c++
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    const int count = 100;
+    vector<int> nums;
+    for (int i = 0; i < count; ++i) {
+        nums.push_back(i);
+    }
+
+    cout << nums.size() << " " << nums.capacity() << endl;
+    nums.resize(count * 2);
+    cout << nums.size() << " " << nums.capacity() << endl;
+
+    return 0;
+}
+```
+
+代码输出：
+
+```c++
+100 128
+200 200
+```
+
+**注：**
+
+增大容器元素个数，size的值与capacity的值相同。
+
+## vector比较
+
+vector容器与容器之间可以直接比较大小，无需再次实现vector容器间的比较函数。
+
+```c++
+template<class T, class Alloc>
+bool operator==(const std::vector<T,Alloc>& lhs,
+                 const std::vector<T,Alloc>& rhs);
+template<class T, class Alloc>
+constexpr bool operator==(const std::vector<T,Alloc>& lhs,
+                           const std::vector<T,Alloc>& rhs);
+template<class T, class Alloc>
+bool operator!=(const std::vector<T,Alloc>& lhs,
+                 const std::vector<T,Alloc>& rhs);
+template<class T, class Alloc>
+bool operator<(const std::vector<T,Alloc>& lhs,
+                const std::vector<T,Alloc>& rhs);
+template<class T, class Alloc>
+bool operator<=(const std::vector<T,Alloc>& lhs,
+                 const std::vector<T,Alloc>& rhs);
+template<class T, class Alloc>
+bool operator>(const std::vector<T,Alloc>& lhs,
+                const std::vector<T,Alloc>& rhs);
+template<class T, class Alloc>
+bool operator>=(const std::vector<T,Alloc>& lhs,
+                 const std::vector<T,Alloc>& rhs);
+```
+
+* 满足上述条件的，返回true；否则返回false。
+
+```c++
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    vector<int> nums1 = {1, 2, 3};
+    vector<int> nums2 = {1, 2, 3, 4};
+
+    cout.flags(ios::boolalpha);
+    cout << "nums1 < nums2:" << (nums1 < nums2) << endl;
+
+    return 0;
+}
+```
+
+代码输出：
+
+```c++
+nums1 < nums2:true
+```
