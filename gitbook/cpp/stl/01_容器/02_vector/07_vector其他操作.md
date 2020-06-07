@@ -404,6 +404,8 @@ bool operator>=(const std::vector<T,Alloc>& lhs,
 
 * 满足上述条件的，返回true；否则返回false。
 
+*a. 一维数组比较大小*
+
 ```c++
 #include <vector>
 #include <iostream>
@@ -414,6 +416,32 @@ int main()
 {
     vector<int> nums1 = {1, 2, 3};
     vector<int> nums2 = {1, 2, 3, 4};
+
+    cout.flags(ios::boolalpha);
+    cout << "nums1 < nums2:" << (nums1 < nums2) << endl;
+
+    return 0;
+}
+```
+
+代码输出：
+
+```c++
+nums1 < nums2:true
+```
+
+*b. 二维数组比较大小*
+
+```c++
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    vector<vector<int>> nums1 = {{1, 2}, {3, 4}};
+    vector<vector<int>> nums2 = {{1, 2}, {3, 5}};
 
     cout.flags(ios::boolalpha);
     cout << "nums1 < nums2:" << (nums1 < nums2) << endl;
