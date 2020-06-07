@@ -34,7 +34,7 @@ int main()
 
     nums.assign(3, 9);
     for (auto val : nums) {
-            cout << val << " ";
+        cout << val << " ";
     }
 
     return 0;
@@ -62,7 +62,7 @@ int main()
 
     nums.assign(origin.begin(), origin.end());
     for (auto val : nums) {
-            cout << val << " ";
+        cout << val << " ";
     }
 
     return 0;
@@ -89,7 +89,7 @@ int main()
     nums.assign({8, 9, 1});
 
     for (auto val : nums) {
-            cout << val << " ";
+        cout << val << " ";
     }
 
     return 0;
@@ -133,7 +133,7 @@ int main()
     nums.insert(nums.end(), 3);
 
     for (auto val : nums) {
-            cout << val << " ";
+        cout << val << " ";
     }
 
     return 0;
@@ -163,7 +163,7 @@ int main()
     nums.insert(iter, 3, 10);
 
     for (auto val : nums) {
-            cout << val << " ";
+        cout << val << " ";
     }
 
     return 0;
@@ -195,7 +195,7 @@ int main()
     nums.insert(iter, begin(addNums), end(addNums));
 
     for (auto val : nums) {
-            cout << val << " ";
+        cout << val << " ";
     }
 
     return 0;
@@ -226,7 +226,7 @@ int main()
     nums.insert(iter, {10, 92});
 
     for (auto val : nums) {
-            cout << val << " ";
+        cout << val << " ";
     }
 
     return 0;

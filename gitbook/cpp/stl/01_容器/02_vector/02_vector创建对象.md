@@ -12,7 +12,7 @@ vector(InputIt first, InputIt last, const Allocator& alloc = Allocator());
 
 **1.创建无元素对象**
 
-定义对象后，采用尾部追加方式新增元素元素。
+定义对象后，采用尾部追加方式新增元素。
 
 ```c++
 #include <vector>
@@ -282,7 +282,6 @@ int main()
 **10.创建二维数组n*m个元素，每行元素之间相同**
 
 ```c++
-#include <array>
 #include <vector>
 #include <iostream>
 
