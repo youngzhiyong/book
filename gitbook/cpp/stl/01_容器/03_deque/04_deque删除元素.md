@@ -1,9 +1,10 @@
-# vector删除元素
+# deque删除元素
 
-vector删除元素，主要有以下几种方式：
+deque删除元素，主要有以下几种方式：
 
 * clear
 * erase
+* pop_front
 * pop_back
 
 **1.删除容器中所有的元素**
@@ -16,18 +17,16 @@ void clear();
 
 * 容器中不包含任何元素；
 * `size()`返回0；
-* `capacity()`的大小不变。
 
 ```c++
-#include <vector>
+#include <deque>
 #include <iostream>
 
 using namespace std;
 
-void ShowNums(vector<int>& nums)
+void ShowNums(deque<int>& nums)
 {
     cout << "size:" << nums.size() << endl;
-    cout << "capacity:" << nums.capacity() << endl;
 
     cout << "val:";
     for (auto val : nums) {
@@ -38,7 +37,7 @@ void ShowNums(vector<int>& nums)
 
 int main()
 {
-    vector<int> nums = {1, 2, 3};
+    deque<int> nums = {1, 2, 3};
     ShowNums(nums);
     nums.clear();
     ShowNums(nums);
@@ -51,10 +50,8 @@ int main()
 
 ```c++
 size:3
-capacity:3
 val:1 2 3
 size:0
-capacity:3
 val:
 ```
 
@@ -65,20 +62,20 @@ iterator erase(iterator pos);
 iterator erase(iterator first, iterator last);
 ```
 
-* 删除容器非尾部的元素，pos后的元素均需向前移动；
+* 删除容器非首尾部的元素，根据pos前后的元素个数，决定pos前面的元素还是pos后的元素进行移动；
 * erase返回被删除元素的下一个元素的迭代器，若删除最后一个元素，将返回`end()`迭代器。
 
 注：两种删除迭代器指代元素的方法
 
 ```c++
-#include <vector>
+#include <deque>
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    vector<int> nums = {1, 2, 3, 4, 5};
+    deque<int> nums = {1, 2, 3, 4, 5};
     for (auto iter = nums.begin(); iter != nums.end(); ) {
         if (*iter & 0x1) {
             iter++;
@@ -103,21 +100,52 @@ int main()
 1 3 5
 ```
 
-**3.删除容器中的最后一个元素**
+**3.删除容器中的第一个元素**
 
 ```c++
-void pop_back();
+void pop_front();
 ```
 
 ```c++
-#include <vector>
+#include <deque>
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    vector<int> nums = {1, 2, 3, 4, 5};
+    deque<int> nums = {1, 2, 3, 4, 5};
+    nums.pop_front();
+
+    for (auto val : nums) {
+        cout << val << " ";
+    }
+
+    return 0;
+}
+```
+
+代码输出：
+
+```c++
+2 3 4 5
+```
+
+**4.删除容器中的最后一个元素**
+
+```c++
+void pop_back();
+```
+
+```c++
+#include <deque>
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    deque<int> nums = {1, 2, 3, 4, 5};
     nums.pop_back();
 
     for (auto val : nums) {

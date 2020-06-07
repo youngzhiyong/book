@@ -117,6 +117,8 @@ iterator insert(const_iterator pos, InputIt first, InputIt last);
 iterator insert(const_iterator pos, std::initializer_list<T> ilist);
 ```
 
+* 在非首尾部插入元素，根据pos位置前后的元素个数，决定pos前面的元素还是pos后面的元素移动。
+
 a. pos位置前插入一个元素
 
 ```c++
