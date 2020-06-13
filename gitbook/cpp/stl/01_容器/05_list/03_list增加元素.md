@@ -1,6 +1,6 @@
-# deque增加元素
+# list增加元素
 
-deque增加元素主要有以下几种方式：
+list增加元素主要有以下几种方式：
 
 * assign
 * insert
@@ -19,20 +19,19 @@ void assign(InputIt first, InputIt last);
 void assign(std::initializer_list<T> ilist); 
 ```
 
-* 以deque类型的对象容器作为类的成员，在初始化函数中，需要对其进行初始化时的常用方法之一。
-* 若deque对象中已经持有元素，调用assign后，**原有的数据将丢失**。
+* 若list对象中已经持有元素，调用assign后，**原有的数据将丢失**。
 
 a. 将容器元素个数置为count，并将每个元素初始化为value。
 
 ```c++
-#include <deque>
+#include <list>
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    deque<int> nums;
+    list<int> nums;
 
     nums.assign(3, 9);
     for (auto val : nums) {
@@ -49,11 +48,11 @@ int main()
 9 9 9
 ```
 
-b. 将其他可迭代对象容器中的元素，初始化当前deque类型的容器。
+b. 将其他可迭代对象容器中的元素，初始化当前list类型的容器。
 
 ```c++
 #include <vector>
-#include <deque>
+#include <list>
 #include <iostream>
 
 using namespace std;
@@ -61,7 +60,7 @@ using namespace std;
 int main()
 {
     vector<int> origin = {8, 9, 1};
-    deque<int> nums;
+    list<int> nums;
 
     nums.assign(origin.begin(), origin.end());
     for (auto val : nums) {
@@ -78,17 +77,17 @@ int main()
 8 9 1
 ```
 
-c. 使用初始化列表方式对已定义的deque容器进行初始化。
+c. 使用初始化列表方式对已定义的list容器进行初始化。
 
 ```c++
-#include <deque>
+#include <list>
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    deque<int> nums;
+    list<int> nums;
     nums.assign({8, 9, 1});
 
     for (auto val : nums) {
@@ -117,19 +116,19 @@ iterator insert(const_iterator pos, InputIt first, InputIt last);
 iterator insert(const_iterator pos, std::initializer_list<T> ilist);
 ```
 
-* 在非首尾部插入元素，根据pos位置前后的元素个数，决定pos前面的元素还是pos后面的元素移动。
+* 在非首尾部插入元素，只需要修改前后node的指针的指向，时间复杂度为$O(1)$。
 
 a. pos位置前插入一个元素
 
 ```c++
-#include <deque>
+#include <list>
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    deque<int> nums {8, 9, 1};
+    list<int> nums {8, 9, 1};
     nums.insert(nums.begin(), 3);
     nums.insert(nums.end(), 3);
 
@@ -150,14 +149,14 @@ int main()
 b. 在pos前插入多个相同元素
 
 ```c++
-#include <deque>
+#include <list>
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    deque<int> nums {8, 9, 1};
+    list<int> nums {8, 9, 1};
 
     auto iter = nums.begin();
     iter++;
@@ -180,14 +179,14 @@ int main()
 c. 在pos前插入可迭代对象
 
 ```c++
-#include <deque>
+#include <list>
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    deque<int> nums {8, 9, 1};
+    list<int> nums {8, 9, 1};
 
     auto iter = nums.begin();
     iter++;
@@ -212,14 +211,14 @@ int main()
 d. 使用初始化列表方式在pos位置前插入元素
 
 ```c++
-#include <deque>
+#include <list>
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    deque<int> nums {8, 9, 1};
+    list<int> nums {8, 9, 1};
 
     auto iter = nums.begin();
     iter++;
@@ -247,12 +246,12 @@ template<class... Args>
 iterator emplace(const_iterator pos, Args&&... args);
 ```
 
-* emplace一次仅能插入**一个**deque的元素；而insert可插入多个元素。
-* args的参数类型、参数个数，须与deque成员元素的构造函数的形参一致。
+* emplace一次仅能插入**一个**list的元素；而insert可插入多个元素。
+* args的参数类型、参数个数，须与list成员元素的构造函数的形参一致。
 * 就地初始化新插入的元素，不再涉及创建临时元素对象的情况，因此效率比insert高。
 
 ```c++
-#include <deque>
+#include <list>
 #include <iostream>
 
 using namespace std;
@@ -273,7 +272,7 @@ private:
 
 int main()
 {
-    deque<Student> students;
+    list<Student> students;
     students.emplace(students.begin(), "cpp", 38);
 
     for (auto student : students) {
@@ -290,21 +289,22 @@ int main()
 cpp 38
 ```
 
-**4.向deque容器的尾部追加元素**
+**4.向list容器的尾部追加元素**
 
 ```c++
 void push_back(const T& value);
 ```
 
 ```c++
-#include <deque>
+#include <vector>
+#include <list>
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    deque<deque<int>> nums;
+    list<vector<int>> nums;
     nums.push_back({1, 2});
     nums.push_back({3, 4});
 
@@ -336,7 +336,7 @@ void emplace_back(Args&&... args);
 * 在尾部追加元素，与push_back类似，只是emplace_back是使用就地初始化的方式，更加高效。
 
 ```c++
-#include <deque>
+#include <list>
 #include <iostream>
 
 using namespace std;
@@ -357,7 +357,7 @@ private:
 
 int main()
 {
-    deque<Student> students;
+    list<Student> students;
     students.emplace_back("cpp", 38);
 
     for (auto student : students) {
@@ -375,21 +375,21 @@ cpp 38
 ```
 
 
-**6.向deque容器的首部追加元素**
+**6.向list容器的首部追加元素**
 
 ```c++
 void push_front(const T& value);
 ```
 
 ```c++
-#include <deque>
+#include <list>
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    deque<deque<int>> nums;
+    list<list<int>> nums;
     nums.push_front({3, 4});
     nums.push_front({1, 2});
 
@@ -421,7 +421,7 @@ void emplace_front(Args&&... args);
 * 在首部追加元素，与push_front类似，只是emplace_front是使用就地初始化的方式，更加高效。
 
 ```c++
-#include <deque>
+#include <list>
 #include <iostream>
 
 using namespace std;
@@ -442,7 +442,7 @@ private:
 
 int main()
 {
-    deque<Student> students;
+    list<Student> students;
     students.emplace_front("cpp", 38);
 
     for (auto student : students) {
@@ -457,4 +457,114 @@ int main()
 
 ```c++
 cpp 38
+```
+
+**8.vector&deque&list增加元素性能对比**
+
+*a.在首部增加元素*
+
+```c++
+#include <vector>
+#include <deque>
+#include <list>
+#include <ctime>
+#include <iostream>
+
+using namespace std;
+
+template<typename T>
+void AddElements(T& container, int count)
+{
+    for (int i = 0; i < count; ++i) {
+        container.insert(container.begin(), i);
+    }
+}
+
+// 统计运行fun函数耗时，返回值单位:秒
+template<typename T>
+double ElapsedTimeMs(void (*fun)(T&, int), T& container, int count)
+{
+    clock_t start = clock();
+    fun(container, count);
+    clock_t end = clock();
+
+    return (end - start) * 1.0 / CLOCKS_PER_SEC * 1000;
+}
+
+int main()
+{
+    const int count = 500000;
+    vector<int> vect;
+    cout << "vector elapsed:" << ElapsedTimeMs(AddElements, vect, count) << "ms" << endl; 
+
+    deque<int> que;
+    cout << "deque elapsed:" << ElapsedTimeMs(AddElements, que, count) << "ms" << endl; 
+
+    list<int> lst;
+    cout << "list elapsed:" << ElapsedTimeMs(AddElements, lst, count) << "ms" << endl; 
+
+    return 0;
+}
+```
+
+代码输出：
+
+```c++
+vector elapsed:124809ms
+deque elapsed:47ms
+list elapsed:93ms
+```
+
+*b.在尾部增加元素*
+
+```c++
+#include <vector>
+#include <deque>
+#include <list>
+#include <ctime>
+#include <iostream>
+
+using namespace std;
+
+template<typename T>
+void AddElements(T& container, int count)
+{
+    for (int i = 0; i < count; ++i) {
+        container.push_back(i);
+    }
+}
+
+// 统计运行fun函数耗时，返回值单位:秒
+template<typename T>
+double ElapsedTimeMs(void (*fun)(T&, int), T& container, int count)
+{
+    clock_t start = clock();
+    fun(container, count);
+    clock_t end = clock();
+
+    return (end - start) * 1.0 / CLOCKS_PER_SEC * 1000;
+}
+
+int main()
+{
+    const int count = 500000;
+    vector<int> vect;
+    cout << "vector elapsed:" << ElapsedTimeMs(AddElements, vect, count) << "ms" << endl; 
+
+    deque<int> que;
+    cout << "deque elapsed:" << ElapsedTimeMs(AddElements, que, count) << "ms" << endl; 
+
+    list<int> lst;
+    cout << "list elapsed:" << ElapsedTimeMs(AddElements, lst, count) << "ms" << endl; 
+
+    return 0;
+}
+```
+
+代码输出：
+
+```c++
+vector elapsed:31ms
+deque elapsed:16ms
+list elapsed:109ms
 ```
