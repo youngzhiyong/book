@@ -480,7 +480,7 @@ void AddElements(T& container, int count)
     }
 }
 
-// 统计运行fun函数耗时，返回值单位:秒
+// 统计运行fun函数耗时，返回值单位:毫秒
 template<typename T>
 double ElapsedTimeMs(void (*fun)(T&, int), T& container, int count)
 {
@@ -534,7 +534,7 @@ void AddElements(T& container, int count)
     }
 }
 
-// 统计运行fun函数耗时，返回值单位:秒
+// 统计运行fun函数耗时，返回值单位:毫秒
 template<typename T>
 double ElapsedTimeMs(void (*fun)(T&, int), T& container, int count)
 {
@@ -568,3 +568,21 @@ vector elapsed:31ms
 deque elapsed:16ms
 list elapsed:109ms
 ```
+
+耗时分析：
+
+* 首部增加：deque > list > vector
+
+   * vector：pos及以后的元素都将被移动；存储空间不足时，新分配存储空间，将旧空间中的元素都搬移到新存储空间。时间复杂度为$O(n)$。
+
+   * deque：基本不涉及元素的搬移，只有当存储空间不足时，新申请定长的元素存储区用于存储新增的元素。时间复杂度为$O(1)$。
+
+   * list：不涉及元素搬移；每新增一个元素，将新申请一个存储元素的node空间。时间复杂度为O(1)。
+
+* 尾部增加：deque > vector> list
+   
+   * vector：基本不涉及元素搬移，只有当存储空间不足时，新分配存储空间，将旧空间中的元素都搬移到新存储空间。时间复杂度为$O(1)$。
+
+   * deque：基本不涉及元素的搬移，只有当存储空间不足时，新申请定长的元素存储区用于存储新增的元素。时间复杂度为$O(1)$。
+
+   * list：不涉及元素搬移；每新增一个元素，将新申请一个存储元素的node空间。时间复杂度为O(1)。
