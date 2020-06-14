@@ -1,73 +1,35 @@
-# vector查找元素
+# list查找元素
 
 ## 访问元素方法
 
-仅列出常用访问元素的方法，其他方法请参考[cppreference](https://en.cppreference.com/w/cpp/container/vector)。
+仅列出常用访问元素的方法，其他方法请参考[cppreference](https://en.cppreference.com/w/cpp/container/list)。
 
-* 角标
 * front和back
 * 迭代器
 
-**1.角标方式支持随机访问**
+**1.front和back访问前后元素**
 
-vector成员函数声明
-
-```c++
-reference operator[](size_type pos);
-```
-
-pos超出vector对象支持的角标范围，将会出现段错误。因此，角标访问时，应注意检查pos的值。
-
-代码示例：
-
-```c++
-#include <vector>
-#include <iostream>
-
-using namespace std;
-
-int main()
-{
-    vector<int> nums = {8, 13, 18};
-
-    cout << nums[2] << " ";
-    cout << nums[0] << endl;
-
-    return 0;
-}
-```
-
-代码输出：
-
-```c++
-18 8
-```
-
-**2.front和back访问前后元素**
-
-vector成员函数声明:
+list成员函数声明:
 
 ```c++
 reference front();
 reference back();
 ```
 
-* front()：返回vector连续存储的最靠前的元素的引用；
-* back()：返回vector连续存储的最靠后的元素的引用；
-
-注：*如果vector对象存储元素为0，front和back为未定义行为*。
+* front()：返回list双向链表表头元素的引用；
+* back()：返回list双向链表表位元素的引用；
 
 代码示例：
 
 ```c++
-#include <vector>
+#include <list>
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    vector<int> nums = {8, 13, 18};
+    list<int> nums = {8, 13, 18};
 
     cout << nums.back() << " ";
     cout << nums.front() << endl;
@@ -82,9 +44,9 @@ int main()
 18 8
 ```
 
-**3.迭代器方式访问元素**
+**2.迭代器方式访问元素**
 
-vector成员函数声明：
+list成员函数声明：
 
 ```c++
 iterator begin() noexcept;
@@ -94,27 +56,28 @@ reverse_iterator rbegin() noexcept;
 reverse_iterator rend() noexcept;
 ```
 
-各迭代器指代位置如下图（来自[cppreference](https://en.cppreference.com/w/cpp/container/vector/rbegin)）：
+各迭代器指代位置如下图（来自[cppreference](https://en.cppreference.com/w/cpp/container/list/rbegin)）：
 
 ![](../../../images/stl/range-rbegin-rend.svg)
 
-* 支持**随机访问**容器的迭代器，支持迭代器加减运算
+* list**不支持**随机访问容器的迭代器，但由于list为**双向链表**，迭代器支持向前/向后累加，即--或++运算
 * 访问迭代器指代的元素，需要解引用
 
 代码示例：
 
 ```c++
-#include <vector>
+#include <list>
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    vector<int> nums = {1, 3, 9, 13, 19, 98};
+    list<int> nums = {1, 3, 9, 13, 19, 98};
 
     auto iter = nums.begin();
-    cout << *iter << "->" << *(iter + 3) << endl;
+    cout << *iter << "->";
+    cout << *(++iter) << endl;
 
     return 0;
 }
@@ -123,49 +86,22 @@ int main()
 代码输出：
 
 ```c++
-1->13
+1->3
 ```
 
-**4.访问所有元素**
+**3.访问所有元素**
 
-*a.角标方式*
+*a.迭代器方式*
 
 ```c++
-#include <vector>
+#include <list>
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    vector<int> nums = {1, 3, 9, 13, 19, 98};
-
-    for (int i = 0; i < nums.size(); ++i) {
-        cout << nums[i] << " ";
-    }
-    cout << endl;
-
-    return 0;
-}
-```
-
-代码输出：
-
-```c++
-1 3 9 13 19 98
-```
-
-*b.迭代器方式*
-
-```c++
-#include <vector>
-#include <iostream>
-
-using namespace std;
-
-int main()
-{
-    vector<int> nums = {1, 3, 9, 13, 19, 98};
+    list<int> nums = {1, 3, 9, 13, 19, 98};
 
     auto iter = nums.begin();
     for (; iter != nums.end(); ++iter) {
@@ -183,17 +119,17 @@ int main()
 1 3 9 13 19 98
 ```
 
-*c.范围for方式*
+*b.范围for方式*
 
 ```c++
-#include <vector>
+#include <list>
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    vector<int> nums = {1, 3, 9, 13, 19, 98};
+    list<int> nums = {1, 3, 9, 13, 19, 98};
 
     for (auto val : nums) {
         cout << val << " ";
@@ -210,19 +146,19 @@ int main()
 1 3 9 13 19 98
 ```
 
-*d.范围for语句访问二维数组*
+*c.范围for语句访问二维链表*
 
-访问二维数组时，对每一行的提取，通过**引用**的方式，提高运行效率。
+访问二维链表时，对每一行的提取，通过**引用**的方式，提高运行效率。
 
 ```c++
-#include <vector>
+#include <list>
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    vector<vector<int>> nums = {
+    list<list<int>> nums = {
         {1, 2, 3},
         {4, 5}
     };
@@ -247,12 +183,15 @@ int main()
 
 说明：
 
-* row的数据类型为`vector<int>&`；
+* row的数据类型为`list<int>&`；
 * row采用引用的方式，减少临时对象的创建，及内存数据的拷贝，从而提高运行效率。
 
 ## 查找元素
 
-* vector中是无序元素，需要遍历所有元素，以此判断是否为需要查找的元素；
-* vector中是有序元素，只需要使用二分查找法快速查找元素(此处不作介绍)。
+* list中无序元素
 
-vector中无序元素查找，在上述访问所有元素小节中，添加判定与目标值的一致性即可。
+   * 若仅查找一次，遍历list中所有元素即可；
+
+   * 若需多次查找，先利用list中的sort排序方法对list中的元素排序，再按照有序的方法进行查找。
+
+* list中是有序元素，只需要使用二分查找法快速查找元素。
