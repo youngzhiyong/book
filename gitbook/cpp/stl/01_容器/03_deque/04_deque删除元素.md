@@ -75,7 +75,7 @@ using namespace std;
 
 int main()
 {
-    deque<int> nums = {1, 2, 3, 4, 5};
+    deque<int> nums = {1, 2, 4, 6, 8, 10, 5};
     for (auto iter = nums.begin(); iter != nums.end(); ) {
         if (*iter & 0x1) {
             iter++;
@@ -83,7 +83,6 @@ int main()
         }
 
         iter = nums.erase(iter);    // 通用方法
-        // nums.erase(iter++);      // 等价形式
     }
 
     for (auto val : nums) {
