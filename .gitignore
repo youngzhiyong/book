@@ -2,3 +2,4 @@
 ~$*.xlsx
 *.exe
 .vscode
+*/__pycache__/*
