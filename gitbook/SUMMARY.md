@@ -5,21 +5,6 @@
 
 ## cpp
 
-* drawing
-    * stl
-        * [stl](cpp/drawing/stl/stl.xlsx)
-        * [stl图](cpp/drawing/stl/stl图.eddx)
-        * [~$stl](cpp/drawing/stl/~$stl.xlsx)
-* images
-    * stl
-        * [array存储结构](cpp/images/stl/array存储结构.png)
-        * [deque存储结构](cpp/images/stl/deque存储结构.png)
-        * [deque对外呈现](cpp/images/stl/deque对外呈现.png)
-        * [list存储结构](cpp/images/stl/list存储结构.png)
-        * [range-begin-end](cpp/images/stl/range-begin-end.svg)
-        * [range-rbegin-rend](cpp/images/stl/range-rbegin-rend.svg)
-        * [vector存储结构](cpp/images/stl/vector存储结构.png)
-        * [六大组件关系图](cpp/images/stl/六大组件关系图.png)
 * stl
     * [STL简介](cpp/stl/00_STL简介.md)
     * 01_容器

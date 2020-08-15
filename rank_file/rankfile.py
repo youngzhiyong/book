@@ -1,6 +1,7 @@
 import os
 import sys
 import re
+import json
 
 class Summary:
     def __init__(self, rank_path:str = None, summary_file:str = "SUMMARY.md"):
@@ -9,6 +10,7 @@ class Summary:
         self.cur_dir_name = os.path.split(os.getcwd())[1]
         self.summary = open(self.summary_file, "w", encoding="utf-8")
         self.special_file = "LICENSE README.md book.json" + summary_file
+        self.cfg = None
     
     def __del__(self):
         self.summary.close()
@@ -28,6 +30,25 @@ class Summary:
             return None
         
         return rank_path
+    
+    def _is_exclude_dir(self, name):
+        if self.cfg is None:
+            return False
+        
+        return name in self.cfg["exclude"]["dirs"]
+    
+    def _is_exclude_file(self, name):
+        if self.cfg is None:
+            return False
+
+        return name in self.cfg["exclude"]["files"]
+    
+    def load_cfg(self, json_file):
+        if not os.path.isfile(json_file):
+            return
+        
+        with open(json_file, "r", encoding="utf-8") as f:
+            self.cfg = json.load(f) 
         
     def rank_book_name(self, book_name = "young book"):
         book_title = self.get_title(1, book_name)
@@ -57,7 +78,7 @@ class Summary:
         files = os.listdir(path)
         files.sort()
         for file in files:
-            if file in self.special_file:
+            if self._is_exclude_file(file): 
                 continue
 
             file_path = path + "/" + file
@@ -68,6 +89,10 @@ class Summary:
                     content = self.get_title(title_level, file)
                 else:
                     content = self.get_list(level, file)
+
+                if self._is_exclude_dir(file):
+                    continue
+
                 self.write_text(content)
                 self.rank_docs(file_path, level + 1)
             else:

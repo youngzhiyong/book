@@ -1,0 +1,6 @@
+{
+    "exclude": {
+        "dirs": ["drawing", "images"],
+        "files": ["LICENSE", "README.md", "book.json", "SUMMARY.md"]
+    }
+}

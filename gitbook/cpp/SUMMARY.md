@@ -3,25 +3,6 @@
 
 * [概述](README.md)
 
-## drawing
-
-* stl
-    * [stl](drawing/stl/stl.xlsx)
-    * [stl图](drawing/stl/stl图.eddx)
-    * [~$stl](drawing/stl/~$stl.xlsx)
-
-## images
-
-* stl
-    * [array存储结构](images/stl/array存储结构.png)
-    * [deque存储结构](images/stl/deque存储结构.png)
-    * [deque对外呈现](images/stl/deque对外呈现.png)
-    * [list存储结构](images/stl/list存储结构.png)
-    * [range-begin-end](images/stl/range-begin-end.svg)
-    * [range-rbegin-rend](images/stl/range-rbegin-rend.svg)
-    * [vector存储结构](images/stl/vector存储结构.png)
-    * [六大组件关系图](images/stl/六大组件关系图.png)
-
 ## stl
 
 * [STL简介](stl/00_STL简介.md)
