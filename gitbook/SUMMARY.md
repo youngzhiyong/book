@@ -45,11 +45,6 @@
         * 06_set
             * [set简介](cpp/stl/01_容器/06_set/01_set简介.md)
             * [set创建对象](cpp/stl/01_容器/06_set/02_set创建对象.md)
-            * [set增加元素](cpp/stl/01_容器/06_set/03_set增加元素.md)
-            * [set删除元素](cpp/stl/01_容器/06_set/04_set删除元素.md)
-            * [set查找元素](cpp/stl/01_容器/06_set/05_set查找元素.md)
-            * [set修改元素](cpp/stl/01_容器/06_set/06_set修改元素.md)
-            * [set其他操作](cpp/stl/01_容器/06_set/07_set其他操作.md)
         * 07_map
             * [operator[]使用](cpp/stl/01_容器/07_map/operator[]使用.md)
         * 08_multiset
