@@ -196,7 +196,6 @@ Foo bubble
 **1.限制类被继承**
 
 ```c++
-#include <vector>
 #include <iostream>
 using namespace std;
 
@@ -222,7 +221,6 @@ The terminal process terminated with exit code: 1
 **2.限制类中的虚函数被覆盖**
 
 ```c++
-#include <vector>
 #include <iostream>
 using namespace std;
 
