@@ -191,3 +191,71 @@ Foo bubble
 
 ## final
 
+用于限制类被继承或者类中的虚函数被覆盖(重写)。
+
+**1.限制类被继承**
+
+```c++
+#include <vector>
+#include <iostream>
+using namespace std;
+
+class Base final {};
+
+class Derive : public Base {};
+
+int main()
+{
+    return 0;
+}
+```
+
+编译输出：
+
+```c++
+test.cpp:7:7: error: cannot derive from 'final' base 'Base' in derived type 'Derive'
+ class Derive : public Base {};
+       ^
+The terminal process terminated with exit code: 1
+```
+
+**2.限制类中的虚函数被覆盖**
+
+```c++
+#include <vector>
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    virtual void Show() {}
+};
+
+class Derive : public Base {
+public:
+    void Show() final {}
+};
+
+class Foo : public Derive {
+public:
+    void Show() override {}
+};
+
+int main()
+{
+    return 0;
+}
+```
+
+编译输出：
+
+```c++
+
+test.cpp:17:10: error: virtual function 'virtual void Foo::Show()'
+     void Show() override {}
+          ^
+test.cpp:12:10: error: overriding final function 'virtual void Derive::Show()'
+     void Show() final {}
+          ^
+The terminal process terminated with exit code: 1
+```
