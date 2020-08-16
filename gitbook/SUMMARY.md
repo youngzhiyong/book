@@ -5,6 +5,12 @@
 
 ## cpp
 
+* c++11新特性
+    * 01_default和delete
+        * [default和delete](cpp/c++11新特性/01_default和delete/00_default和delete.md)
+    * 02_虚函数的override和final
+        * [重载&覆盖&隐藏](cpp/c++11新特性/02_虚函数的override和final/01_重载&覆盖&隐藏.md)
+        * [override和final](cpp/c++11新特性/02_虚函数的override和final/02_override和final.md)
 * stl
     * [STL简介](cpp/stl/00_STL简介.md)
     * 01_容器

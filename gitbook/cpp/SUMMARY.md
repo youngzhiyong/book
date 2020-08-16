@@ -3,6 +3,14 @@
 
 * [概述](README.md)
 
+## c++11新特性
+
+* 01_default和delete
+    * [default和delete](c++11新特性/01_default和delete/00_default和delete.md)
+* 02_虚函数的override和final
+    * [重载&覆盖&隐藏](c++11新特性/02_虚函数的override和final/01_重载&覆盖&隐藏.md)
+    * [override和final](c++11新特性/02_虚函数的override和final/02_override和final.md)
+
 ## stl
 
 * [STL简介](stl/00_STL简介.md)
