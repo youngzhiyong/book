@@ -198,6 +198,8 @@ The terminal process terminated with exit code: 1
 
 仅支持对象的创建，限制对象间的拷贝，常见于限制对象所有权的转移，比如：C++ 11中的多线程的互斥锁；单例设计模式类的定义中。
 
+类的特殊函数禁用总体原则：构造和赋值操作符终止函数，成对出现或被删除。
+
 *a.未使用delete实现的单例*
 
 ```c++
@@ -277,6 +279,197 @@ addr=0x403030:0x403030
 ```
 
 **3.类中特殊函数禁用后的呈现**
+
+此处，主要介绍拷贝构造-赋值操作符重载和移动构造-移动赋值操作符重载被禁用后的呈现。
+
+基于上述特殊函数禁用的总体原则：
+a.拷贝构造定义，移动构造未定义，使用移动语义传参给构造函数，调用拷贝构造函数；
+b.拷贝构造被删除，移动构造未定义，移动构造同样被删除；
+c.拷贝构造被删除，移动构造定义，移动构造可用。
+
+*a.拷贝构造函数的调用*
+
+```c++
+#include <iostream>
+using namespace std;
+
+class Foo {
+public:
+    Foo()
+    {
+        cout << "construct" << endl;
+    }
+
+    Foo(const Foo& other)
+    {
+        cout << "copy construct" << endl;
+    }
+
+    Foo& operator=(const Foo& other)
+    {
+        cout << "operator=" << endl;
+
+        return *this;
+    }
+};
+
+int main()
+{
+    Foo foo1;
+    cout << "------" << endl;
+    Foo foo2 = foo1;
+
+    return 0;
+}
+```
+
+代码输出：
+
+```c++
+construct
+------
+copy construct
+```
+
+*b.拷贝构造定义，移动构造未定义*
+
+```c++
+#include <iostream>
+using namespace std;
+
+class Foo {
+public:
+    Foo()
+    {
+        cout << "construct" << endl;
+    }
+
+    Foo(const Foo& other)
+    {
+        cout << "copy construct" << endl;
+    }
+
+    Foo& operator=(const Foo& other)
+    {
+        cout << "operator=" << endl;
+
+        return *this;
+    }
+};
+
+int main()
+{
+    Foo foo1;
+    cout << "------" << endl;
+    Foo foo2(move(foo1));
+
+    return 0;
+}
+```
+
+代码输出：
+
+```c++
+construct
+------
+copy construct
+```
+
+*c.拷贝构造被删除，移动构造未定义*
+
+```c++
+#include <iostream>
+using namespace std;
+
+class Foo {
+public:
+    Foo()
+    {
+        cout << "construct" << endl;
+    }
+
+    Foo(const Foo& other) = delete;
+    Foo& operator=(const Foo& other) = delete;
+};
+
+int main()
+{
+    Foo foo1;
+
+    cout << "------" << endl;
+    Foo foo2 = foo1;
+
+    cout << "------" << endl;
+    Foo foo3(move(foo1));
+
+    return 0;
+}
+```
+
+编译输出：
+
+```c++
+test.cpp: In function 'int main()':
+test.cpp:20:16: error: use of deleted function 'Foo::Foo(const Foo&)'
+     Foo foo2 = foo1;
+                ^
+test.cpp:11:5: note: declared here
+     Foo(const Foo& other) = delete;
+     ^
+test.cpp:23:24: error: use of deleted function 'Foo::Foo(const Foo&)'
+     Foo foo3(move(foo1));
+                        ^
+test.cpp:11:5: note: declared here
+     Foo(const Foo& other) = delete;
+     ^
+The terminal process terminated with exit code: 1
+```
+
+*d.拷贝构造被删除，移动构造定义*
+
+```c++
+#include <iostream>
+using namespace std;
+
+class Foo {
+public:
+    Foo()
+    {
+        cout << "construct" << endl;
+    }
+
+    Foo(const Foo& other) = delete;
+    Foo& operator=(const Foo& other) = delete;
+
+    Foo(Foo&& other)
+    {
+        cout << "move construct" << endl;
+    } 
+
+    Foo& operator=(Foo&& other)
+    {
+        cout << "move operator=" << endl;
+    } 
+};
+
+int main()
+{
+    Foo foo1;
+
+    cout << "------" << endl;
+    Foo foo2(move(foo1));
+
+    return 0;
+}
+```
+
+代码输出：
+
+```c++
+construct
+------
+move construct
+```
 
 **4.禁用某些参数列表的重载函数**
 
