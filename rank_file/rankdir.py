@@ -2,10 +2,10 @@ import os
 import rankfile
 
 class Rank:
-    def __init__(self, root_path = "../gitbook"):
+    def __init__(self, root_path="../gitbook"):
         self.root_path = root_path
     
-    def rank(self):
+    def rank(self, json_file="rank_file_cfg.json"):
         if not os.path.isdir(self.root_path):
             print(self.root_path, "is not valid rank dir path")
             return
@@ -18,6 +18,7 @@ class Rank:
                 continue
 
             summary = rankfile.Summary(book_path)
+            summary.load_cfg(json_file)
             summary.rank_files()
 
 if __name__ == "__main__":
