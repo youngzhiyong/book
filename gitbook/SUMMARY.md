@@ -9,6 +9,7 @@
     * 01_default和delete
         * [default和delete](cpp/c++11新特性/01_default和delete/00_default和delete.md)
     * 02_虚函数的override和final
+        * [简介](cpp/c++11新特性/02_虚函数的override和final/00_简介.md)
         * [重载&覆盖&隐藏](cpp/c++11新特性/02_虚函数的override和final/01_重载&覆盖&隐藏.md)
         * [override和final](cpp/c++11新特性/02_虚函数的override和final/02_override和final.md)
 * stl
@@ -69,7 +70,16 @@
     * 04_适配器
     * 05_仿函数
     * 06_分配器
+* 沙场练兵
+    * 填坑指南
+    * 掉坑指南
+        * [排序](cpp/沙场练兵/掉坑指南/01_排序.md)
+        * [构造函数调用虚函数](cpp/沙场练兵/掉坑指南/02_构造函数调用虚函数.md)
+        * [for的死循环](cpp/沙场练兵/掉坑指南/03_for的死循环.md)
+        * [隐藏](cpp/沙场练兵/掉坑指南/04_隐藏.md)
 
 ## python
 
-* [文件中文编码](python/文件中文编码.md)
+* [格式化输出](python/01_格式化输出.md)
+* [文件中文编码](python/02_文件中文编码.md)
+* [装饰器](python/03_装饰器.md)
