@@ -40,7 +40,6 @@
             * [deque查找元素](cpp/stl/01_容器/03_deque/05_deque查找元素.md)
             * [deque修改元素](cpp/stl/01_容器/03_deque/06_deque修改元素.md)
             * [deque其他操作](cpp/stl/01_容器/03_deque/07_deque其他操作.md)
-        * 04_forward_list
         * 05_list
             * [list简介](cpp/stl/01_容器/05_list/01_list简介.md)
             * [list创建对象](cpp/stl/01_容器/05_list/02_list创建对象.md)
@@ -54,10 +53,6 @@
             * [set创建对象](cpp/stl/01_容器/06_set/02_set创建对象.md)
         * 07_map
             * [operator[]使用](cpp/stl/01_容器/07_map/operator[]使用.md)
-        * 08_multiset
-        * 09_multimap
-        * 10_unordered_set
-        * 11_unordered_map
     * 02_迭代器
         * [迭代器简介](cpp/stl/02_迭代器/00_迭代器简介.md)
         * [删除迭代器的正确方法](cpp/stl/02_迭代器/删除迭代器的正确方法.md)
@@ -67,9 +62,6 @@
             * [不含排序算法容器的排序](cpp/stl/03_算法/排序/01_不含排序算法容器的排序.md)
             * [含排序算法容器的排序](cpp/stl/03_算法/排序/02_含排序算法容器的排序.md)
             * [容器排序总结](cpp/stl/03_算法/排序/03_容器排序总结.md)
-    * 04_适配器
-    * 05_仿函数
-    * 06_分配器
 * 沙场练兵
     * 填坑指南
         * [逻辑运算符短路](cpp/沙场练兵/填坑指南/01_逻辑运算符短路.md)
@@ -88,3 +80,4 @@
 * [装饰器](python/03_装饰器.md)
 * [函数传参](python/04_函数传参.md)
 * [单例模式](python/05_单例模式.md)
+* [字典映射(表驱动)实现switch功能](python/06_字典映射(表驱动)实现switch功能.md)
