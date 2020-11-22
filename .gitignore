@@ -1,3 +1,4 @@
+*.py
 *.cpp
 ~$*.xlsx
 *.exe
