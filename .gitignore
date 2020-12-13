@@ -4,3 +4,4 @@
 *.exe
 .vscode
 */__pycache__/*
+*.html
