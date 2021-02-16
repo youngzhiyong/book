@@ -76,6 +76,7 @@
         * [vector删除元素](cpp/沙场练兵/掉坑指南/08_vector删除元素.md)
         * [vector的异常](cpp/沙场练兵/掉坑指南/09_vector的异常.md)
         * [set丧失唯一性](cpp/沙场练兵/掉坑指南/10_set丧失唯一性.md)
+* [demo](demo.py)
 
 ## python
 
@@ -86,3 +87,6 @@
 * [单例模式](python/05_单例模式.md)
 * [字典映射(表驱动)实现switch功能](python/06_字典映射(表驱动)实现switch功能.md)
 * [实时获取鼠标位置](python/07_实时获取鼠标位置.md)
+* [变量赋值](python/08_变量赋值.md)
+* [列表深浅拷贝](python/09_列表深浅拷贝.md)
+* [字符串与列表间转换](python/10_字符串与列表间转换.md)
