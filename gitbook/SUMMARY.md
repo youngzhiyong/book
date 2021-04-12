@@ -3,6 +3,15 @@
 
 * [概述](README.md)
 
+## .vscode
+
+* [settings](.vscode/settings.json)
+
+## __pycache__
+
+* [base](__pycache__/base.cpython-37.pyc)
+* [demo](__pycache__/demo.cpython-37.pyc)
+
 ## cpp
 
 * c++11新特性
@@ -77,6 +86,7 @@
         * [vector的异常](cpp/沙场练兵/掉坑指南/09_vector的异常.md)
         * [set丧失唯一性](cpp/沙场练兵/掉坑指南/10_set丧失唯一性.md)
 * [demo](demo.py)
+* [main](main.py)
 
 ## python
 
@@ -91,4 +101,6 @@
 * [列表深浅拷贝](python/09_列表深浅拷贝.md)
 * [字符串与列表间转换](python/10_字符串与列表间转换.md)
 * [二维列表陷进](python/11_二维列表陷进.md)
+* [模块加载](python/11_模块加载.md)
 * [列表扩展](python/12_列表扩展.md)
+* [类相关变量](python/13_类相关变量.md)
