@@ -7,11 +7,6 @@
 
 * [settings](.vscode/settings.json)
 
-## __pycache__
-
-* [base](__pycache__/base.cpython-37.pyc)
-* [demo](__pycache__/demo.cpython-37.pyc)
-
 ## cpp
 
 * c++11新特性
@@ -85,7 +80,6 @@
         * [vector删除元素](cpp/沙场练兵/掉坑指南/08_vector删除元素.md)
         * [vector的异常](cpp/沙场练兵/掉坑指南/09_vector的异常.md)
         * [set丧失唯一性](cpp/沙场练兵/掉坑指南/10_set丧失唯一性.md)
-* [demo](demo.py)
 * [main](main.py)
 
 ## python
