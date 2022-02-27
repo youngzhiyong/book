@@ -3,6 +3,7 @@
 
 * [C++](gitbook/cpp/SUMMARY.md)
 * [Python](gitbook/python/SUMMARY.md)
+* [CMake](gitbook/cmake/SUMMARY.md)
 
 
 如有疑问请联系：<youngzhiyong@163.com>

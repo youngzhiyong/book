@@ -3,9 +3,10 @@
 
 * [概述](README.md)
 
-## .vscode
+## cmake
 
-* [settings](.vscode/settings.json)
+* [CMake之Hello](cmake/01_CMake之Hello.md)
+* [CMake之单target](cmake/02_CMake之单target.md)
 
 ## cpp
 
@@ -80,7 +81,6 @@
         * [vector删除元素](cpp/沙场练兵/掉坑指南/08_vector删除元素.md)
         * [vector的异常](cpp/沙场练兵/掉坑指南/09_vector的异常.md)
         * [set丧失唯一性](cpp/沙场练兵/掉坑指南/10_set丧失唯一性.md)
-* [main](main.py)
 
 ## python
 
@@ -99,4 +99,3 @@
 * [模块加载](python/13_模块加载.md)
 * [类相关变量](python/14_类相关变量.md)
 * [类的继承属性搜索规则](python/15_类的继承属性搜索规则.md)
-* [LEGB规则](python/16_LEGB规则.md)
