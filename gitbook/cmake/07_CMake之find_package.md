@@ -4,7 +4,7 @@
 
 *注：在全量源码构建时，一般不会，也不能用cmake预定义的路径下的Find\<PackageName>.cmake文件。*
 
-由于Windows中，编写动态库，并使用动态库，代码书写比较麻烦。因此，这一章节，将在[win10 + wsl2 + Ubuntu](08_CMake之win10+wls+Ubuntu环境搭建.md)环境下，实现相关的demo。
+由于Windows中，编写动态库，并使用动态库，代码书写比较麻烦。因此，这一章节，将在[win10 + wsl2 + Ubuntu](08_CMake之win10+WSL+Ubuntu环境搭建.md)环境下，实现相关的demo。
 
 find_package一般支持两种查找库的方式：
 
