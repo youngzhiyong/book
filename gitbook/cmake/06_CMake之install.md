@@ -51,12 +51,12 @@ target_link_libraries(multi_targets PRIVATE
     calculator_lib
 )
 
-# install 可执行程序，install到 CMAKE_INSTALL_PREFIX/bin目录下
+# install 可执行程序到 CMAKE_INSTALL_PREFIX/bin目录下
 install(TARGETS multi_targets
     RUNTIME DESTINATION bin
 )
 
-# install 可执行程序，install到 CMAKE_INSTALL_PREFIX/lib目录下
+# install 动态库到 CMAKE_INSTALL_PREFIX/lib目录下
 install(TARGETS calculator_lib
     LIBRARY DESTINATION lib 
 )
@@ -66,7 +66,7 @@ install(FILES config.json
     DESTINATION config
 )
 
-# install 整个include整个目录到 CMAKE_INSTALL_PREFIX/include目录下
+# install 整个include目录到 CMAKE_INSTALL_PREFIX目录下
 install(DIRECTORY calculator/include
     DESTINATION ${CMAKE_INSTALL_PREFIX}
 )

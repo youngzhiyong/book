@@ -8,3 +8,4 @@
 * [CMake之头文件target](04_CMake之头文件target.md)
 * [CMake之CMake常用变量说明](05_CMake之CMake常用变量说明.md)
 * [CMake之install](06_CMake之install.md)
+* [CMake之find_package](07_CMake之find_package.md)

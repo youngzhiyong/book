@@ -105,7 +105,7 @@ class Summary:
     def extract_text(self, filename):
         text = filename.split(".")[0]
         if re.match("[0-9]._", text):
-            text = text.split("_")[1]
+            text = text.split("_", 1)[1]
         
         return text
     
