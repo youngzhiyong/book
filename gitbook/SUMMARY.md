@@ -13,6 +13,7 @@
 * [CMake之install](cmake/06_CMake之install.md)
 * [CMake之find_package](cmake/07_CMake之find_package.md)
 * [CMake之win10+WSL+Ubuntu环境搭建](cmake/08_CMake之win10+WSL+Ubuntu环境搭建.md)
+* [CMake之add_custom_target](cmake/09_CMake之add_custom_target.md)
 
 ## cpp
 
