@@ -80,6 +80,7 @@ make install -j
 ```
 
 **优点：** 脚本简单直接
+
 **缺点：** 
 > * 每次构建，所有开源软件都需构建一次。
 > * 如果开源软件引入较多，或某个开源软件构建时间比较长，那么项目上势必影响工作效率。
@@ -89,6 +90,7 @@ make install -j
 ## add_custom_target连接开源软件和自研软件构建
 
 a. 将build.sh文件中，开源软件的构建部分，提取到build_calculator.sh文件中。
+
 b. `./src/CMakeLists.txt`文件内容修改为如下内容：
 
 ```cmake
@@ -112,7 +114,7 @@ else()
     add_custom_target(phony_build_calculator
         COMMAND ${CMAKE_COMMAND} ${CMAKE_SOURCE_DIR}    # 再次执行CMAKE命令
         DEPENDS build_calculator
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}   #指定为构建目录
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}   # 指定为构建目录
         COMMENT "built build_calculator custom target, re-execute cmake command!"
     )
 endif()
@@ -145,3 +147,11 @@ install(TARGETS find_package_demo
 ```
 
 使用add_custom_target后，可以将所有开源软件与自研代码，都纳入到CMAKE构建系统，IDE能很好的构建指定的target。
+
+## 扩展
+
+如果开源软件较多，每个开源软件都按照上述的代码实现，那将是冗长且多余的。可以考虑使用python代码生成相关代码：
+
+* 提供一个json文件，包含各个开源软件包名、库名、支持`find_package`相关的路径、包名_FOUND等配置。
+* 提供公共部分的CMAKE代码模板，涉及多个开源软件，因此需使用循环语句。
+* python生成的CMAKE代码，更多的是设置每一个开源软件构建时的CMAKE变量。
