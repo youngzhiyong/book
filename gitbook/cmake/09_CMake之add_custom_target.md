@@ -69,14 +69,17 @@ target间的依赖顺序是：`cd_target`->`pwd_target`->`ls_target`
 # 构建开源软件
 #!/usr/bin/env bash
 
-mkdir -p build/calculator && cd build/calculator/
+# 构建开源软件
+mkdir -p build/calculator && pushd build/calculator/
 cmake ../../opensource/calculator/ -DCMAKE_INSTALL_PREFIX=../../output/calculator
 make install -j  # 多线程构建
+popd
 
 # 构建自研软件
-mkdir -p build/src && cd build/src
+mkdir -p build/src && pushd build/src
 cmake ../../ -DCMAKE_INSTALL_PREFIX=../../output/src
 make install -j
+popd
 ```
 
 **优点：** 脚本简单直接
